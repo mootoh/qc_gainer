@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.apple.quartzcomposer.QCRubyPlugin</string>
+	<string>com.apple.quartzcomposer.QCGainer</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -22,7 +22,7 @@
 	<string>RBLoader</string>
 	<key>QCPlugInClasses</key>
 	<array>
-		<string>QCRubyPlugin</string>
+		<string>QCGainer</string>
 	</array>
 </dict>
 </plist>

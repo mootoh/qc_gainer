@@ -11,7 +11,7 @@
 @implementation RBLoader
 
 +(void) load {
-	if (RBBundleInit("qc_plugin.rb", self, nil)) {
+	if (RBBundleInit("qc_gainer.rb", self, nil)) {
       NSLog(@"RBLoader#load failed");
 	}
 }

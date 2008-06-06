@@ -5,21 +5,9 @@
 require 'logger'
 require 'osx/cocoa'
 OSX.require_framework 'QuartzComposer'
+require 'funnel'
 
-class QCRubyPlugin < OSX::QCPlugIn
-=begin
-  def self.attributes
-
-    {OSX::QCPlugInAttributeNameKey => "Example RubyPlugin",
-     OSX::QCPlugInAttributeDescriptionKey => "by RubyCocoa."
-    }
-	
-  end
-
-  def self.attributesForPropertyPortWithKey(key)
-  end
-=end
-	
+class QCGainer < OSX::QCPlugIn
   def self.executionMode
     2
   end
@@ -31,11 +19,12 @@ class QCRubyPlugin < OSX::QCPlugIn
   def initialize
     @logger = Logger.new('/tmp/qc_ruby_plugin.log')
     @logger.level = Logger::DEBUG
+    @yet = true
+    @gio = Funnel::Gainer.new(Funnel::Gainer::MODE1)
   end
 
-
   def startExecution(context)
-	@logger.debug("startExecution")
+    @logger.debug("startExecution")
 
     Thread.new {
       sleep 0.1
@@ -43,7 +32,7 @@ class QCRubyPlugin < OSX::QCPlugIn
         begin
           addInputPortWithType_forKey_withAttributes(OSX::QCPortTypeString, "input_" + i.to_s, nil)
           addOutputPortWithType_forKey_withAttributes(OSX::QCPortTypeString, "out_" + i.to_s, nil)
-		  @logger.debug("ports added")
+          @logger.debug("ports added")
         rescue => e
           @logger.error(e.message)
         end
@@ -53,21 +42,20 @@ class QCRubyPlugin < OSX::QCPlugIn
   end
 
   def execute_atTime_withArguments(context, time, args)
-	@logger.debug("execute !")
-	begin
-      @logger.debug(valueForInputKey("input_0"))
-      setValue_forOutputKey(
-		[valueForInputKey("input_0"), "Ruby", valueForInputKey("input_1")].join(' '),
-		"out_0")
-    rescue => e
-      @logger.error(e.message)
+    @logger.debug("execute !")
+
+    if @yet
+      @gio.ain(0).on Funnel::PortEvent::CHANGE do |event|
+        setValue_forOutputKey(event.target.value, "out_0")
+      end
+      @yet = false
     end
 
     true
   end
 
   def stopExecution(context)
-	@logger.debug("stopExecution")
+    @logger.debug("stopExecution")
     true
   end
 end

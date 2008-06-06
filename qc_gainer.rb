@@ -1,5 +1,7 @@
 #
-#  Created by mootoh on 6/3/08.
+#  qc_gainer.rb
+#
+#  Created by mootoh on 6/6/08.
 #  Copyright (c) 2008 deadbeaf.org. All rights reserved.
 #
 require 'osx/cocoa'
@@ -38,15 +40,20 @@ class QCGainer < OSX::QCPlugIn
 
   def execute_atTime_withArguments(context, time, args)
     unless @initialized
-      @gio.ain(0).on Funnel::PortEvent::CHANGE do |event|
-        @ain[0] = event.target.value
+      4.times do |i|
+        @gio.ain(i).on Funnel::PortEvent::CHANGE do |event|
+          @ain[i] = event.target.value
+        end
+        @gio.din(i).on Funnel::PortEvent::CHANGE do |event|
+          @din[i] = event.target.value
+        end
       end
       @initialized = false
     end
 
     4.times do |i|
-      self.setValue_forOutputKey(@ain[i], "ain_" + i.to_s)
-      self.setValue_forOutputKey(@din[i], "din_" + i.to_s)
+      setValue_forOutputKey(@ain[i], "ain_" + i.to_s)
+      setValue_forOutputKey(@din[i], "din_" + i.to_s)
     end
 
     true

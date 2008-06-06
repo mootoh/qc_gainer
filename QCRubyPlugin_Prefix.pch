@@ -1,7 +1,4 @@
-//
-// Prefix header for all source files of the 'QCRubyPlugin' target in the 'QCRubyPlugin' project.
-//
-
 #ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
+	#import <Quartz/Quartz.h>
+	#import <InstantMessage/IMService.h>
 #endif

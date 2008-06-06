@@ -1,0 +1,22 @@
+QuartzComposer Custom Plugin for Gainer I/O module.
+
+Requirement
+-----------------------------
+- Funnel
+- OSC
+- Gainer I/O module
+
+Usage
+-----------------------------
+Before using this, you should do following:
+
+1. connect Gainer I/O module with your Mac.
+2. start Funnel server.
+
+License
+-----------------------------
+MIT. (see LICENSE file)
+
+Author
+-----------------------------
+Motohiro Takayama <mootoh@gmail.com>

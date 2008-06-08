@@ -46,7 +46,7 @@
 		86060F700DF6DF0C0063F27F /* RBLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RBLoader.h; sourceTree = "<group>"; };
 		86060F710DF6DF0C0063F27F /* RBLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RBLoader.m; sourceTree = "<group>"; };
 		866BECED0DF4BF5F00DCE9AF /* qc_gainer.rb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.ruby; path = qc_gainer.rb; sourceTree = "<group>"; };
-		867D57020DF75BEF00E8ADCD /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
+		867D57020DF75BEF00E8ADCD /* RubyCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RubyCocoa.framework; path = /System/Library/Frameworks/RubyCocoa.framework; sourceTree = "<absolute>"; };
 		8D5B49B6048680CD000E48DA /* QCGainer.plugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QCGainer.plugin; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -230,10 +230,10 @@
 			buildSettings = {
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = BatteryInfo_Prefix.pch;
+				GCC_PREFIX_HEADER = QCGainer_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "/Library/Graphics/Quartz Composer Plug-Ins";
-				PRODUCT_NAME = BatteryInfo;
+				PRODUCT_NAME = QCGainer;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = plugin;
 			};
